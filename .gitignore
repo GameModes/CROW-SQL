@@ -172,3 +172,12 @@ Icon?
 
 # Specific files to ignore
 instructions.md
+
+# Ignore benchmark data folder
+data/
+
+# Ignore logs folder
+logs/
+
+# Ignore result files
+results/
