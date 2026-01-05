@@ -1,0 +1,10 @@
+# Evaluation notebook dependencies
+python-Levenshtein
+adjustText
+more-itertools
+numpy
+pandas
+matplotlib
+seaborn
+plotly
+sqlglot

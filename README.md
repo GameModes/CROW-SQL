@@ -78,6 +78,97 @@ You can check available models at: https://ollama.ai/library
 
 ### 6. Prepare Datasets (Required for Benchmarking)
 
+#### Option 0: Download dev_databases (Included in this repository)
+
+This repository includes the dev_databases via Git LFS. If you cloned this repository and the database files in `data/dev_databases/` are empty or contain pointer files, you need to install Git LFS and pull the actual files.
+
+**Step 1: Install Git LFS**
+
+**On Ubuntu/Debian:**
+```bash
+# Update package list and install git-lfs
+sudo apt-get update
+sudo apt-get install -y git-lfs
+
+# Initialize git-lfs for your user account
+git lfs install
+```
+
+**On Windows:**
+
+Method A: Using Git for Windows (Recommended)
+```powershell
+# If you have Git for Windows installed, git-lfs may already be included
+# Check by running:
+git lfs version
+
+# If not installed, download the installer from:
+# https://git-lfs.github.com/
+# Run the installer and follow the prompts
+
+# After installation, initialize git-lfs:
+git lfs install
+```
+
+Method B: Using Chocolatey
+```powershell
+# Install Chocolatey first if not already installed (run as Administrator)
+# Then install git-lfs:
+choco install git-lfs
+
+# Initialize git-lfs
+git lfs install
+```
+
+Method C: Using winget
+```powershell
+# Install using Windows Package Manager
+winget install GitHub.GitLFS
+
+# Initialize git-lfs
+git lfs install
+```
+
+**Step 2: Pull the dev_databases**
+
+After installing Git LFS, navigate to your repository and pull the large files:
+
+```bash
+# Navigate to the repository root
+cd /path/to/CROW-SQL
+
+# Pull all LFS files (this downloads the actual database files)
+git lfs pull
+
+# Alternatively, if you want to pull specific files only:
+git lfs pull --include="data/dev_databases/**"
+```
+
+**Step 3: Verify the Download**
+
+```bash
+# Check file sizes - real database files should be larger than a few KB
+ls -lh data/dev_databases/*/
+
+# You should see .sqlite files with actual sizes (MB range)
+# Example expected output:
+# california_schools/california_schools.sqlite (several MB)
+# card_games/card_games.sqlite (several MB)
+# etc.
+```
+
+If files still appear small (under 1KB), they may still be LFS pointer files. Try:
+```bash
+# Force re-fetch of LFS files
+git lfs fetch --all
+git lfs checkout
+```
+
+**Troubleshooting Git LFS:**
+- **"git-lfs: command not found"**: Ensure Git LFS is installed and in your PATH
+- **"Smudge error"**: Your Git LFS quota may be exceeded or network issues occurred
+- **Files still show as pointers**: Run `git lfs pull` again or check with `git lfs status`
+
 #### Option 1: Testing Dataset (Bird Mini - for testing only)
 ```bash
 # Create directories for Bird mini dataset
