@@ -3,3 +3,4 @@
 *.db filter=lfs diff=lfs merge=lfs -text
 *.sqlite3 filter=lfs diff=lfs merge=lfs -text
 *.csv filter=lfs diff=lfs merge=lfs -text
+results/** filter=lfs diff=lfs merge=lfs -text
